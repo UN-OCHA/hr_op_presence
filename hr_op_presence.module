@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Operational Presence feature.
+ */
+
+include_once 'hr_op_presence.features.inc';
