@@ -63,7 +63,7 @@ function hr_op_presence_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['path'] = 'op-presence';
+  $handler->display->display_options['path'] = 'operational-presence';
   $translatables['users'] = array(
     t('Master'),
     t('Operational Presence'),
