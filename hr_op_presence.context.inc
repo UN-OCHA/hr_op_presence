@@ -13,13 +13,13 @@ function hr_op_presence_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'users';
-  $context->description = 'When searching for users';
-  $context->tag = 'users';
+  $context->name = 'op_presence';
+  $context->description = 'When searching for operational presence';
+  $context->tag = 'Operational Presence';
   $context->conditions = array(
     'views' => array(
       'values' => array(
-        'users:page' => 'users:page',
+        'op_presence:page' => 'op_presence:page',
       ),
     ),
   );
@@ -74,9 +74,9 @@ function hr_op_presence_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-3',
         ),
-        'views--exp-users-page' => array(
+        'views--exp-op_presence-page' => array(
           'module' => 'views',
-          'delta' => '-exp-users-page',
+          'delta' => '-exp-op_presence-page',
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
@@ -87,9 +87,9 @@ function hr_op_presence_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('When searching for users');
+  t('When searching for operational presence');
   t('users');
-  $export['users'] = $context;
+  $export['op_presence'] = $context;
 
   return $export;
 }

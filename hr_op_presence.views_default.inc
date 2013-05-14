@@ -11,11 +11,11 @@ function hr_op_presence_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'users';
+  $view->name = 'op_presence';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'search_api_index_users';
-  $view->human_name = 'Users';
+  $view->human_name = 'Operational Presence';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -63,7 +63,7 @@ function hr_op_presence_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['path'] = 'users';
+  $handler->display->display_options['path'] = 'op-presence';
   $translatables['users'] = array(
     t('Master'),
     t('Operational Presence'),
@@ -86,7 +86,7 @@ function hr_op_presence_views_default_views() {
     t('Search for'),
     t('Page'),
   );
-  $export['users'] = $view;
+  $export['op_presence'] = $view;
 
   return $export;
 }
