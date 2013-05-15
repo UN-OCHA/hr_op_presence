@@ -60,7 +60,7 @@ function hr_op_presence_ds_custom_fields_info() {
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '[user:mail]',
+      'value' => '<a href="mailto:[user:mail]">[user:mail]</a>',
       'format' => 'full_html',
     ),
     'use_token' => 0,
