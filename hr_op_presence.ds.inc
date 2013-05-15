@@ -17,6 +17,11 @@ function hr_op_presence_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'user';
   $ds_fieldsetting->view_mode = 'search';
   $ds_fieldsetting->settings = array(
+    'user_email' => array(
+      'weight' => '0',
+      'label' => 'inline',
+      'format' => 'default',
+    ),
     'name' => array(
       'weight' => '0',
       'label' => 'hidden',
@@ -28,12 +33,39 @@ function hr_op_presence_ds_field_settings_info() {
       ),
     ),
     'ds_user_picture' => array(
-      'weight' => '0',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'ds_picture_square_thumbnail',
     ),
   );
   $export['user|user|search'] = $ds_fieldsetting;
+
+  return $export;
+}
+
+/**
+ * Implements hook_ds_custom_fields_info().
+ */
+function hr_op_presence_ds_custom_fields_info() {
+  $export = array();
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'user_email';
+  $ds_field->label = 'Email';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'user' => 'user',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<a href="mailto:[user:mail]">[user:mail]</a>',
+      'format' => 'simple',
+    ),
+    'use_token' => 1,
+  );
+  $export['user_email'] = $ds_field;
 
   return $export;
 }
@@ -53,27 +85,29 @@ function hr_op_presence_ds_layout_settings_info() {
   $ds_layout->layout = 'ds_2col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'left' => array(
-        0 => 'ds_user_picture',
-      ),
       'header' => array(
-        1 => 'name',
+        0 => 'name',
       ),
       'right' => array(
-        2 => 'field_phones',
-        3 => 'field_organizations',
-        4 => 'field_job_title',
-        5 => 'field_clusters',
-        6 => 'field_locations',
+        1 => 'user_email',
+        3 => 'field_phones',
+        4 => 'field_clusters',
+        5 => 'field_job_title',
+        6 => 'field_organizations',
+        7 => 'field_locations',
+      ),
+      'left' => array(
+        2 => 'ds_user_picture',
       ),
     ),
     'fields' => array(
-      'ds_user_picture' => 'left',
       'name' => 'header',
+      'user_email' => 'right',
+      'ds_user_picture' => 'left',
       'field_phones' => 'right',
-      'field_organizations' => 'right',
-      'field_job_title' => 'right',
       'field_clusters' => 'right',
+      'field_job_title' => 'right',
+      'field_organizations' => 'right',
       'field_locations' => 'right',
     ),
     'classes' => array(),
