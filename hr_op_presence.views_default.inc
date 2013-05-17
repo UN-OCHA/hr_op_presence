@@ -48,7 +48,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Search for';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = '';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
@@ -387,7 +387,6 @@ function hr_op_presence_views_default_views() {
     t('User ID'),
     t('.'),
     t(','),
-    t('Search for'),
     t('List'),
     t('Table'),
     t('Clusters'),
