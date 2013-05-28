@@ -65,7 +65,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['filters']['roles']['field'] = 'roles';
   $handler->display->display_options['filters']['roles']['operator'] = '<>';
   $handler->display->display_options['filters']['roles']['value'] = array(
-    30037204 => '30037204',
+    3 => '3',
   );
 
   /* Display: Master */
