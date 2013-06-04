@@ -20,6 +20,14 @@ function hr_op_presence_ctools_plugin_api() {
   if ($module == "facetapi" && $api == "facetapi_defaults") {
     return array("version" => "1");
   }
+  list($module, $api) = func_get_args();
+  if ($module == "openlayers" && $api == "openlayers_maps") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
 }
 
 /**
@@ -73,14 +81,17 @@ function hr_op_presence_default_search_api_index() {
         "field_organizations" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_clusters" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_locations" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_job_title" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_coordination_hubs" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_emergencies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_fundings" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_themes" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_job_title" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_first_name" : { "type" : "text" },
         "field_last_name" : { "type" : "text" },
-        "search_api_language" : { "type" : "string" }
+        "search_api_language" : { "type" : "string" },
+        "field_locations:field_location:wkt" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_locations:field_location:lat" : { "type" : "list\\u003Cdecimal\\u003E" },
+        "field_locations:field_location:lon" : { "type" : "list\\u003Cdecimal\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },

@@ -22,7 +22,7 @@ function hr_op_presence_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Operational Presence';
+  $handler->display->display_options['title'] = 'Contacts';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -37,6 +37,13 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'search_api_index_users';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  /* Field: Indexed User: Location » Well-known text */
+  $handler->display->display_options['fields']['field_location_wkt']['id'] = 'field_location_wkt';
+  $handler->display->display_options['fields']['field_location_wkt']['table'] = 'search_api_index_users';
+  $handler->display->display_options['fields']['field_location_wkt']['field'] = 'field_location_wkt';
+  $handler->display->display_options['fields']['field_location_wkt']['label'] = '';
+  $handler->display->display_options['fields']['field_location_wkt']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_location_wkt']['link_to_entity'] = 0;
   /* Sort criterion: Search: Relevance */
   $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_users';
@@ -48,7 +55,6 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = '';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
@@ -376,9 +382,139 @@ function hr_op_presence_views_default_views() {
     'table' => 'table',
     'default' => 0,
   );
+
+  /* Display: Map Data */
+  $handler = $view->new_display('openlayers', 'Map Data', 'map_data');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'openlayers_data';
+  $handler->display->display_options['style_options']['data_source'] = array(
+    'value' => 'other_latlon',
+    'other_lat' => 'field_location_lat',
+    'other_lon' => 'field_location_lon',
+    'wkt' => 'field_organizations',
+    'other_top' => 'field_organizations',
+    'other_right' => 'field_organizations',
+    'other_bottom' => 'field_organizations',
+    'other_left' => 'field_organizations',
+    'name_field' => '',
+    'description_field' => 'field_organizations',
+    'style_field' => '',
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Indexed User: Location */
+  $handler->display->display_options['relationships']['field_locations']['id'] = 'field_locations';
+  $handler->display->display_options['relationships']['field_locations']['table'] = 'search_api_index_users';
+  $handler->display->display_options['relationships']['field_locations']['field'] = 'field_locations';
+  /* Relationship: Indexed User: Organization */
+  $handler->display->display_options['relationships']['field_organizations']['id'] = 'field_organizations';
+  $handler->display->display_options['relationships']['field_organizations']['table'] = 'search_api_index_users';
+  $handler->display->display_options['relationships']['field_organizations']['field'] = 'field_organizations';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'entity_taxonomy_term';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['relationship'] = 'field_organizations';
+  $handler->display->display_options['fields']['tid']['label'] = '';
+  $handler->display->display_options['fields']['tid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['tid']['separator'] = '';
+  $handler->display->display_options['fields']['tid']['link_to_entity'] = 0;
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid_1']['id'] = 'tid_1';
+  $handler->display->display_options['fields']['tid_1']['table'] = 'entity_taxonomy_term';
+  $handler->display->display_options['fields']['tid_1']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid_1']['relationship'] = 'field_locations';
+  $handler->display->display_options['fields']['tid_1']['label'] = '';
+  $handler->display->display_options['fields']['tid_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['tid_1']['separator'] = '';
+  $handler->display->display_options['fields']['tid_1']['link_to_entity'] = 0;
+  /* Field: Indexed User: Organization */
+  $handler->display->display_options['fields']['field_organizations']['id'] = 'field_organizations';
+  $handler->display->display_options['fields']['field_organizations']['table'] = 'search_api_index_users';
+  $handler->display->display_options['fields']['field_organizations']['field'] = 'field_organizations';
+  $handler->display->display_options['fields']['field_organizations']['label'] = '';
+  $handler->display->display_options['fields']['field_organizations']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_organizations']['alter']['path'] = 'operational-presence/list/organization/[tid]/location/[tid_1]';
+  $handler->display->display_options['fields']['field_organizations']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_organizations']['list']['mode'] = 'first';
+  $handler->display->display_options['fields']['field_organizations']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_organizations']['view_mode'] = 'full';
+  /* Field: Taxonomy term: Location » Latitude */
+  $handler->display->display_options['fields']['field_location_lat']['id'] = 'field_location_lat';
+  $handler->display->display_options['fields']['field_location_lat']['table'] = 'entity_taxonomy_term';
+  $handler->display->display_options['fields']['field_location_lat']['field'] = 'field_location_lat';
+  $handler->display->display_options['fields']['field_location_lat']['relationship'] = 'field_locations';
+  /* Field: Taxonomy term: Location » Longitude */
+  $handler->display->display_options['fields']['field_location_lon']['id'] = 'field_location_lon';
+  $handler->display->display_options['fields']['field_location_lon']['table'] = 'entity_taxonomy_term';
+  $handler->display->display_options['fields']['field_location_lon']['field'] = 'field_location_lon';
+  $handler->display->display_options['fields']['field_location_lon']['relationship'] = 'field_locations';
+  $handler->display->display_options['fields']['field_location_lon']['label'] = '';
+  $handler->display->display_options['fields']['field_location_lon']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_location_lon']['precision'] = '0';
+  $handler->display->display_options['fields']['field_location_lon']['link_to_entity'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Search: Fulltext search */
+  $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_users';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    218860149 => 0,
+    200153887 => 0,
+    52310416 => 0,
+    30037204 => 0,
+  );
+  /* Filter criterion: Indexed User: User roles */
+  $handler->display->display_options['filters']['roles']['id'] = 'roles';
+  $handler->display->display_options['filters']['roles']['table'] = 'search_api_index_users';
+  $handler->display->display_options['filters']['roles']['field'] = 'roles';
+  $handler->display->display_options['filters']['roles']['operator'] = '<>';
+  $handler->display->display_options['filters']['roles']['value'] = array(
+    3 => '3',
+  );
+  /* Filter criterion: Location » Location: Latitude (indexed) */
+  $handler->display->display_options['filters']['field_locations_field_location_lat']['id'] = 'field_locations_field_location_lat';
+  $handler->display->display_options['filters']['field_locations_field_location_lat']['table'] = 'search_api_index_users';
+  $handler->display->display_options['filters']['field_locations_field_location_lat']['field'] = 'field_locations_field_location_lat';
+  $handler->display->display_options['filters']['field_locations_field_location_lat']['operator'] = 'not empty';
+
+  /* Display: Map */
+  $handler = $view->new_display('page', 'Map', 'map');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Operational Presence (Experimental)';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'openlayers_map';
+  $handler->display->display_options['style_options']['map'] = 'op_presence';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['path'] = 'operational-presence/map';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Map';
+  $handler->display->display_options['menu']['weight'] = '2';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['op_presence'] = array(
     t('Master'),
-    t('Operational Presence'),
+    t('Contacts'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -413,6 +549,10 @@ function hr_op_presence_views_default_views() {
     t('Emergencies'),
     t('XML'),
     t('Themes'),
+    t('Map Data'),
+    t('Location » Latitude'),
+    t('Map'),
+    t('Operational Presence (Experimental)'),
   );
   $export['op_presence'] = $view;
 
