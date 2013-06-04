@@ -506,6 +506,13 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = 'This map is still EXPERIMENTAL and has known issues, such as organizations appearing as duplicate in the popups. We are working on it to provide a more stable version.';
+  $handler->display->display_options['header']['area']['format'] = 'simple';
   $handler->display->display_options['path'] = 'operational-presence/map';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Map';
@@ -553,6 +560,7 @@ function hr_op_presence_views_default_views() {
     t('Location » Latitude'),
     t('Map'),
     t('Operational Presence (Experimental)'),
+    t('This map is still EXPERIMENTAL and has known issues, such as organizations appearing as duplicate in the popups. We are working on it to provide a more stable version.'),
   );
   $export['op_presence'] = $view;
 

@@ -6,7 +6,6 @@ php = 5.2.4
 dependencies[] = humanitarianresponse_search
 dependencies[] = humanitarianresponse_users
 dependencies[] = menu
-dependencies[] = openlayers
 dependencies[] = openlayers_views
 dependencies[] = views_data_export
 features[context][] = op_presence
