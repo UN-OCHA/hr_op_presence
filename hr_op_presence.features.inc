@@ -86,17 +86,30 @@ function hr_op_presence_default_search_api_index() {
         "field_emergencies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_fundings" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_themes" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_first_name" : { "type" : "text" },
-        "field_last_name" : { "type" : "text" },
+        "field_first_name" : { "type" : "string" },
+        "field_last_name" : { "type" : "string" },
+        "field_opt_out" : { "type" : "boolean" },
         "search_api_language" : { "type" : "string" },
-        "field_locations:field_location:wkt" : { "type" : "list\\u003Ctext\\u003E" },
+        "search_api_aggregation_1" : { "type" : "text" },
+        "field_locations:field_location:wkt" : { "type" : "list\\u003Cstring\\u003E" },
         "field_locations:field_location:lat" : { "type" : "list\\u003Cdecimal\\u003E" },
         "field_locations:field_location:lon" : { "type" : "list\\u003Cdecimal\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_aggregation" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "fields" : { "search_api_aggregation_1" : {
+                "name" : "Real Name",
+                "type" : "fulltext",
+                "fields" : [ "field_first_name", "field_last_name" ],
+                "description" : "A Fulltext aggregation of the following fields: First name, Last name."
+              }
+            }
+          }
+        },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
@@ -137,6 +150,53 @@ function hr_op_presence_default_search_api_index() {
     },
     "enabled" : "1",
     "read_only" : "0",
+    "rdf_mapping" : []
+  }');
+  return $items;
+}
+
+/**
+ * Implements hook_default_search_api_sort().
+ */
+function hr_op_presence_default_search_api_sort() {
+  $items = array();
+  $items['users__field_first_name'] = entity_import('search_api_sort', '{
+    "index_id" : "users",
+    "field" : "field_first_name",
+    "name" : "First name",
+    "enabled" : "1",
+    "weight" : "0",
+    "identifier" : "users__field_first_name",
+    "default_sort" : "0",
+    "default_sort_no_terms" : "0",
+    "default_order" : "asc",
+    "options" : { "field_name" : "First name" },
+    "rdf_mapping" : []
+  }');
+  $items['users__field_last_name'] = entity_import('search_api_sort', '{
+    "index_id" : "users",
+    "field" : "field_last_name",
+    "name" : "Last name",
+    "enabled" : "1",
+    "weight" : "0",
+    "identifier" : "users__field_last_name",
+    "default_sort" : "0",
+    "default_sort_no_terms" : "1",
+    "default_order" : "asc",
+    "options" : { "field_name" : "Last name" },
+    "rdf_mapping" : []
+  }');
+  $items['users__search_api_relevance'] = entity_import('search_api_sort', '{
+    "index_id" : "users",
+    "field" : "search_api_relevance",
+    "name" : "Relevance",
+    "enabled" : "1",
+    "weight" : "0",
+    "identifier" : "users__search_api_relevance",
+    "default_sort" : "1",
+    "default_sort_no_terms" : "0",
+    "default_order" : "desc",
+    "options" : { "field_name" : "search_api_relevance" },
     "rdf_mapping" : []
   }');
   return $items;

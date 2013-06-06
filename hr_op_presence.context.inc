@@ -82,6 +82,11 @@ function hr_op_presence_context_default_contexts() {
         ),
       ),
     ),
+    'disable_context' => array(
+      'disabled' => array(
+        'search_box' => 'search_box',
+      ),
+    ),
   );
   $context->condition_mode = 0;
 
@@ -112,6 +117,12 @@ function hr_op_presence_context_default_contexts() {
           'delta' => '-exp-op_presence-master',
           'region' => 'sidebar_first',
           'weight' => '-9',
+        ),
+        'search_api_sorts-search-sorts' => array(
+          'module' => 'search_api_sorts',
+          'delta' => 'search-sorts',
+          'region' => 'sidebar_first',
+          'weight' => '0',
         ),
       ),
     ),
@@ -145,6 +156,12 @@ function hr_op_presence_context_default_contexts() {
           'delta' => '-exp-op_presence-table',
           'region' => 'sidebar_first',
           'weight' => '-9',
+        ),
+        'search_api_sorts-search-sorts' => array(
+          'module' => 'search_api_sorts',
+          'delta' => 'search-sorts',
+          'region' => 'sidebar_first',
+          'weight' => '0',
         ),
       ),
     ),

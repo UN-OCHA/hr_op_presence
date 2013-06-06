@@ -44,11 +44,6 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['field_location_wkt']['label'] = '';
   $handler->display->display_options['fields']['field_location_wkt']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_location_wkt']['link_to_entity'] = 0;
-  /* Sort criterion: Search: Relevance */
-  $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
-  $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_users';
-  $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
-  $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_users';
@@ -65,13 +60,13 @@ function hr_op_presence_views_default_views() {
     52310416 => 0,
     30037204 => 0,
   );
-  /* Filter criterion: Indexed User: User roles */
-  $handler->display->display_options['filters']['roles']['id'] = 'roles';
-  $handler->display->display_options['filters']['roles']['table'] = 'search_api_index_users';
-  $handler->display->display_options['filters']['roles']['field'] = 'roles';
-  $handler->display->display_options['filters']['roles']['operator'] = '<>';
-  $handler->display->display_options['filters']['roles']['value'] = array(
-    3 => '3',
+  /* Filter criterion: Indexed User: Opt-out */
+  $handler->display->display_options['filters']['field_opt_out']['id'] = 'field_opt_out';
+  $handler->display->display_options['filters']['field_opt_out']['table'] = 'search_api_index_users';
+  $handler->display->display_options['filters']['field_opt_out']['field'] = 'field_opt_out';
+  $handler->display->display_options['filters']['field_opt_out']['operator'] = '<>';
+  $handler->display->display_options['filters']['field_opt_out']['value'] = array(
+    1 => '1',
   );
 
   /* Display: Master */
