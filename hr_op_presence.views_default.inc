@@ -68,6 +68,13 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['filters']['field_opt_out']['value'] = array(
     1 => '1',
   );
+  /* Filter criterion: Indexed User: Status */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'search_api_index_users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Master */
   $handler = $view->new_display('page', 'Master', 'master');
