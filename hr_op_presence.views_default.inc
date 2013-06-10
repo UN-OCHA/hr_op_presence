@@ -79,6 +79,13 @@ function hr_op_presence_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('page', 'Master', 'master');
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = 'Want to be part of this contact list ? Click on the "Sign in" button on this website and follow the steps to register.';
+  $handler->display->display_options['header']['area']['format'] = 'plain_text';
   $handler->display->display_options['path'] = 'operational-presence';
   $handler->display->display_options['menu']['title'] = 'List';
   $handler->display->display_options['menu']['weight'] = '0';
@@ -540,6 +547,7 @@ function hr_op_presence_views_default_views() {
     t('User ID'),
     t('.'),
     t(','),
+    t('Want to be part of this contact list ? Click on the "Sign in" button on this website and follow the steps to register.'),
     t('List'),
     t('Table'),
     t('Clusters'),
