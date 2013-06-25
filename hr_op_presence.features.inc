@@ -66,7 +66,7 @@ function hr_op_presence_default_search_api_index() {
     "server" : "solr_server",
     "item_type" : "user",
     "options" : {
-      "index_directly" : 0,
+      "index_directly" : 1,
       "cron_limit" : "50",
       "fields" : {
         "uid" : { "type" : "integer" },
