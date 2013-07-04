@@ -85,24 +85,24 @@ function hr_op_presence_ds_layout_settings_info() {
   $ds_layout->layout = 'ds_2col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'header' => array(
-        0 => 'name',
-      ),
       'right' => array(
-        1 => 'user_email',
+        0 => 'user_email',
         3 => 'field_phones',
         4 => 'field_clusters',
         5 => 'field_job_title',
         6 => 'field_organizations',
         7 => 'field_locations',
       ),
+      'header' => array(
+        1 => 'name',
+      ),
       'left' => array(
         2 => 'ds_user_picture',
       ),
     ),
     'fields' => array(
-      'name' => 'header',
       'user_email' => 'right',
+      'name' => 'header',
       'ds_user_picture' => 'left',
       'field_phones' => 'right',
       'field_clusters' => 'right',

@@ -19,7 +19,7 @@ function hr_op_presence_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'If you do not want to appear on our <a href="/operational-presence">Contact list</a>, check this box',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -41,7 +41,7 @@ function hr_op_presence_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'user_register_form' => 0,
+      'user_register_form' => 1,
     ),
     'widget' => array(
       'active' => 1,
@@ -50,12 +50,13 @@ function hr_op_presence_field_default_field_instances() {
         'display_label' => 0,
       ),
       'type' => 'options_onoff',
-      'weight' => 36,
+      'weight' => 4,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('If you do not want to appear on our <a href="/operational-presence">Contact list</a>, check this box');
   t('Opt-out');
 
   return $field_instances;
