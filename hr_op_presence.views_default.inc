@@ -37,13 +37,12 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'search_api_index_users';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
-  /* Field: Indexed User: Location » Well-known text */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_location_wkt']['id'] = 'field_location_wkt';
   $handler->display->display_options['fields']['field_location_wkt']['table'] = 'search_api_index_users';
   $handler->display->display_options['fields']['field_location_wkt']['field'] = 'field_location_wkt';
   $handler->display->display_options['fields']['field_location_wkt']['label'] = '';
   $handler->display->display_options['fields']['field_location_wkt']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_location_wkt']['link_to_entity'] = 0;
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_users';
@@ -267,7 +266,31 @@ function hr_op_presence_views_default_views() {
         'eval_after' => '',
       ),
     ),
-    'search_api_aggregation_1' => array(
+    'field_first_name' => array(
+      'position' => array(
+        'object' => 'last_position',
+        'corner' => 'top_left',
+        'x' => '',
+        'y' => '',
+        'width' => '',
+        'height' => '',
+      ),
+      'text' => array(
+        'font_size' => '',
+        'font_family' => 'default',
+        'font_style' => NULL,
+        'align' => NULL,
+        'hyphenate' => NULL,
+        'color' => '',
+      ),
+      'render' => array(
+        'is_html' => 1,
+        'minimal_space' => '1',
+        'eval_before' => '',
+        'eval_after' => '',
+      ),
+    ),
+    'field_last_name' => array(
       'position' => array(
         'object' => 'last_position',
         'corner' => 'top_left',
@@ -454,14 +477,21 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['field_organizations']['list']['mode'] = 'first';
   $handler->display->display_options['fields']['field_organizations']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_organizations']['view_mode'] = 'full';
-  /* Field: Indexed User: Real Name */
-  $handler->display->display_options['fields']['search_api_aggregation_1']['id'] = 'search_api_aggregation_1';
-  $handler->display->display_options['fields']['search_api_aggregation_1']['table'] = 'search_api_index_users';
-  $handler->display->display_options['fields']['search_api_aggregation_1']['field'] = 'search_api_aggregation_1';
-  $handler->display->display_options['fields']['search_api_aggregation_1']['label'] = '';
-  $handler->display->display_options['fields']['search_api_aggregation_1']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['search_api_aggregation_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['search_api_aggregation_1']['link_to_entity'] = 0;
+  /* Field: Indexed User: First name */
+  $handler->display->display_options['fields']['field_first_name']['id'] = 'field_first_name';
+  $handler->display->display_options['fields']['field_first_name']['table'] = 'search_api_index_users';
+  $handler->display->display_options['fields']['field_first_name']['field'] = 'field_first_name';
+  $handler->display->display_options['fields']['field_first_name']['label'] = '';
+  $handler->display->display_options['fields']['field_first_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_first_name']['element_label_colon'] = FALSE;
+  /* Field: Indexed User: Last name */
+  $handler->display->display_options['fields']['field_last_name']['id'] = 'field_last_name';
+  $handler->display->display_options['fields']['field_last_name']['table'] = 'search_api_index_users';
+  $handler->display->display_options['fields']['field_last_name']['field'] = 'field_last_name';
+  $handler->display->display_options['fields']['field_last_name']['label'] = '';
+  $handler->display->display_options['fields']['field_last_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_last_name']['alter']['text'] = '[field_first_name] [field_last_name]';
+  $handler->display->display_options['fields']['field_last_name']['element_label_colon'] = FALSE;
   /* Field: Indexed User: Job Title */
   $handler->display->display_options['fields']['field_job_title']['id'] = 'field_job_title';
   $handler->display->display_options['fields']['field_job_title']['table'] = 'search_api_index_users';
@@ -924,6 +954,7 @@ function hr_op_presence_views_default_views() {
     t('<div style="text-align: center; font-size: small; font-style: italic;">Page {:pnp:} of {:ptp:}</div>'),
     t('([field_organization_acronym])'),
     t('[field_organizations] [field_organization_acronym]'),
+    t('[field_first_name] [field_last_name]'),
     t('CSV'),
     t('Salutation'),
     t('Telephones'),
