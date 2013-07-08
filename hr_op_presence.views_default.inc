@@ -570,8 +570,8 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['field_phones']['click_sort_column'] = 'numbertype';
   $handler->display->display_options['fields']['field_phones']['settings'] = array(
     'components' => array(
-      'numbertype' => 'numbertype',
       'country' => 0,
+      'numbertype' => 0,
     ),
     'full_hcard' => 0,
     'as_tel_link' => 0,
@@ -598,6 +598,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['field_locations']['id'] = 'field_locations';
   $handler->display->display_options['fields']['field_locations']['table'] = 'search_api_index_users';
   $handler->display->display_options['fields']['field_locations']['field'] = 'field_locations';
+  $handler->display->display_options['fields']['field_locations']['label'] = 'Location';
   $handler->display->display_options['fields']['field_locations']['list']['separator'] = ';';
   $handler->display->display_options['fields']['field_locations']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_locations']['view_mode'] = 'full';
@@ -707,6 +708,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['field_locations']['id'] = 'field_locations';
   $handler->display->display_options['fields']['field_locations']['table'] = 'search_api_index_users';
   $handler->display->display_options['fields']['field_locations']['field'] = 'field_locations';
+  $handler->display->display_options['fields']['field_locations']['label'] = 'Location';
   $handler->display->display_options['fields']['field_locations']['list']['separator'] = ';';
   $handler->display->display_options['fields']['field_locations']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_locations']['view_mode'] = 'full';
@@ -925,6 +927,7 @@ function hr_op_presence_views_default_views() {
     t('CSV'),
     t('Salutation'),
     t('Telephones'),
+    t('Location'),
     t('Coordination Hub'),
     t('Fundings'),
     t('Theme(s)'),
@@ -932,7 +935,6 @@ function hr_op_presence_views_default_views() {
     t('XML'),
     t('Themes'),
     t('Map Data'),
-    t('Location'),
     t('Location » Latitude'),
     t('Map'),
     t('Operational Presence (Experimental)'),
