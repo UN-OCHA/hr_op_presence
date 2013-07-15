@@ -13,13 +13,13 @@ function hr_op_presence_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'user_profiles';
+  $context->name = 'op_presence';
   $context->description = 'When searching for operational presence';
   $context->tag = 'Operational Presence';
   $context->conditions = array(
     'views' => array(
       'values' => array(
-        'user_profiles' => 'user_profiles',
+        'op_presence' => 'op_presence',
       ),
     ),
   );
@@ -89,27 +89,27 @@ function hr_op_presence_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Operational Presence');
   t('When searching for operational presence');
-  $export['user_profiles'] = $context;
+  $export['op_presence'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'user_profiles_master';
+  $context->name = 'op_presence_master';
   $context->description = 'When searching for operational presence';
   $context->tag = 'Operational Presence';
   $context->conditions = array(
     'views' => array(
       'values' => array(
-        'user_profiles:master' => 'user_profiles:master',
+        'op_presence:master' => 'op_presence:master',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views--exp-user_profiles-master' => array(
+        'views--exp-op_presence-master' => array(
           'module' => 'views',
-          'delta' => '-exp-user_profiles-master',
+          'delta' => '-exp-op_presence-master',
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
@@ -128,18 +128,18 @@ function hr_op_presence_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Operational Presence');
   t('When searching for operational presence');
-  $export['user_profiles_master'] = $context;
+  $export['op_presence_master'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'user_profiles_table';
+  $context->name = 'op_presence_table';
   $context->description = 'When searching for operational presence';
   $context->tag = 'Operational Presence';
   $context->conditions = array(
     'views' => array(
       'values' => array(
-        'user_profiles:table' => 'user_profiles:table',
+        'op_presence:table' => 'op_presence:table',
       ),
     ),
   );
@@ -152,9 +152,9 @@ function hr_op_presence_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '0',
         ),
-        'views--exp-user_profiles-table' => array(
+        'views--exp-op_presence-table' => array(
           'module' => 'views',
-          'delta' => '-exp-user_profiles-table',
+          'delta' => '-exp-op_presence-table',
           'region' => 'sidebar_first',
           'weight' => '-9',
         ),
@@ -167,7 +167,7 @@ function hr_op_presence_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Operational Presence');
   t('When searching for operational presence');
-  $export['user_profiles_table'] = $context;
+  $export['op_presence_table'] = $context;
 
   return $export;
 }

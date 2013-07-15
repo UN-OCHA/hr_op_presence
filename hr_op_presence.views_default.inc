@@ -11,7 +11,7 @@ function hr_op_presence_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'user_profiles';
+  $view->name = 'op_presence';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'search_api_index_user_profiles';
@@ -54,7 +54,7 @@ function hr_op_presence_views_default_views() {
   $handler = $view->new_display('page', 'Master', 'master');
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['header'] = FALSE;
-  $handler->display->display_options['path'] = 'user-profiles';
+  $handler->display->display_options['path'] = 'operational-presence';
   $handler->display->display_options['menu']['title'] = 'List';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
@@ -63,7 +63,7 @@ function hr_op_presence_views_default_views() {
   /* Display: List */
   $handler = $view->new_display('page', 'List', 'list');
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['path'] = 'user-profiles/list';
+  $handler->display->display_options['path'] = 'operational-presence/list';
   $handler->display->display_options['menu']['type'] = 'default tab';
   $handler->display->display_options['menu']['title'] = 'List';
   $handler->display->display_options['menu']['weight'] = '0';
@@ -118,7 +118,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['field_locations']['list']['separator'] = ';';
   $handler->display->display_options['fields']['field_locations']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_locations']['view_mode'] = 'full';
-  $handler->display->display_options['path'] = 'user-profiles/table';
+  $handler->display->display_options['path'] = 'operational-presence/table';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Table';
   $handler->display->display_options['menu']['weight'] = '0';
@@ -496,7 +496,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['page_break']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['page_break']['last_row'] = 0;
   $handler->display->display_options['fields']['page_break']['every_nth'] = '10';
-  $handler->display->display_options['path'] = 'user-profiles/pdf';
+  $handler->display->display_options['path'] = 'operational-presence/pdf';
   $handler->display->display_options['displays'] = array(
     'master' => 'master',
     'list' => 'list',
@@ -620,7 +620,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['field_emergencies']['list']['separator'] = ';';
   $handler->display->display_options['fields']['field_emergencies']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_emergencies']['view_mode'] = 'full';
-  $handler->display->display_options['path'] = 'user-profiles/csv';
+  $handler->display->display_options['path'] = 'operational-presence/csv';
   $handler->display->display_options['displays'] = array(
     'master' => 'master',
     'list' => 'list',
@@ -730,7 +730,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['field_emergencies']['list']['separator'] = ';';
   $handler->display->display_options['fields']['field_emergencies']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_emergencies']['view_mode'] = 'full';
-  $handler->display->display_options['path'] = 'user-profiles/xml';
+  $handler->display->display_options['path'] = 'operational-presence/xml';
   $handler->display->display_options['displays'] = array(
     'master' => 'master',
     'list' => 'list',
@@ -797,7 +797,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['field_organizations']['field'] = 'field_organizations';
   $handler->display->display_options['fields']['field_organizations']['label'] = '';
   $handler->display->display_options['fields']['field_organizations']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_organizations']['alter']['path'] = 'user-profiles/list/organization/[tid]/location/[tid_1]';
+  $handler->display->display_options['fields']['field_organizations']['alter']['path'] = 'operational-presence/list/organization/[tid]/location/[tid_1]';
   $handler->display->display_options['fields']['field_organizations']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_organizations']['list']['mode'] = 'first';
   $handler->display->display_options['fields']['field_organizations']['link_to_entity'] = 0;
@@ -861,7 +861,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = 'This map is still EXPERIMENTAL and has known issues, such as organizations appearing as duplicate in the popups. We are working on it to provide a more stable version.';
   $handler->display->display_options['header']['area']['format'] = 'simple';
-  $handler->display->display_options['path'] = 'user-profiles/map';
+  $handler->display->display_options['path'] = 'operational-presence/map';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Map';
   $handler->display->display_options['menu']['weight'] = '2';
@@ -920,7 +920,7 @@ function hr_op_presence_views_default_views() {
     t('Operational Presence (Experimental)'),
     t('This map is still EXPERIMENTAL and has known issues, such as organizations appearing as duplicate in the popups. We are working on it to provide a more stable version.'),
   );
-  $export['user_profiles'] = $view;
+  $export['op_presence'] = $view;
 
   return $export;
 }
