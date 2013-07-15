@@ -18,7 +18,7 @@ function hr_op_presence_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_opt_out',
     'field_permissions' => array(
-      'type' => 1,
+      'type' => 0,
     ),
     'foreign keys' => array(),
     'indexes' => array(
@@ -35,6 +35,7 @@ function hr_op_presence_field_default_field_bases() {
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
+      'profile2_private' => 1,
     ),
     'translatable' => 0,
     'type' => 'list_boolean',
