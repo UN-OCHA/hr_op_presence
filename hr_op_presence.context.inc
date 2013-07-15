@@ -13,13 +13,13 @@ function hr_op_presence_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'op_presence';
+  $context->name = 'user_profiles';
   $context->description = 'When searching for operational presence';
   $context->tag = 'Operational Presence';
   $context->conditions = array(
     'views' => array(
       'values' => array(
-        'op_presence' => 'op_presence',
+        'user_profiles' => 'user_profiles',
       ),
     ),
   );
@@ -32,59 +32,54 @@ function hr_op_presence_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
-        'facetapi-J2xx0ZiR3sjvfqAjGXay2ae1j3EOqPxe' => array(
+        'facetapi-l0YNsdJjrUIEbFjM007gmuIiDcuQXIfn' => array(
           'module' => 'facetapi',
-          'delta' => 'J2xx0ZiR3sjvfqAjGXay2ae1j3EOqPxe',
-          'region' => 'sidebar_first',
-          'weight' => '-8',
-        ),
-        'facetapi-hdh0JdbKEqIFj28eXUBwYwmtSiXIa04Y' => array(
-          'module' => 'facetapi',
-          'delta' => 'hdh0JdbKEqIFj28eXUBwYwmtSiXIa04Y',
-          'region' => 'sidebar_first',
-          'weight' => '-7',
-        ),
-        'facetapi-wJ0dyEg4XOmgo3TKrwyyTEqmOJWPTLhk' => array(
-          'module' => 'facetapi',
-          'delta' => 'wJ0dyEg4XOmgo3TKrwyyTEqmOJWPTLhk',
-          'region' => 'sidebar_first',
-          'weight' => '-6',
-        ),
-        'facetapi-zrgG5chbURHO9dEaGrG68E1d4eDOZ8Q3' => array(
-          'module' => 'facetapi',
-          'delta' => 'zrgG5chbURHO9dEaGrG68E1d4eDOZ8Q3',
-          'region' => 'sidebar_first',
-          'weight' => '-5',
-        ),
-        'facetapi-PiuAlibaoH24MdE4v7MBQLzDuoliaJ2K' => array(
-          'module' => 'facetapi',
-          'delta' => 'PiuAlibaoH24MdE4v7MBQLzDuoliaJ2K',
-          'region' => 'sidebar_first',
-          'weight' => '-4',
-        ),
-        'facetapi-kHK3aOdWG1zh4SceP1pcR4UYr1UyDDNK' => array(
-          'module' => 'facetapi',
-          'delta' => 'kHK3aOdWG1zh4SceP1pcR4UYr1UyDDNK',
-          'region' => 'sidebar_first',
-          'weight' => '-3',
-        ),
-        'facetapi-LGbKhOgYKfyhB4WcN8pt94CqhVIE4bZZ' => array(
-          'module' => 'facetapi',
-          'delta' => 'LGbKhOgYKfyhB4WcN8pt94CqhVIE4bZZ',
-          'region' => 'sidebar_first',
-          'weight' => '-2',
-        ),
-        'facetapi-0vsegKOA0gRsJS9ViRZ1zSAeFmr00QZS' => array(
-          'module' => 'facetapi',
-          'delta' => '0vsegKOA0gRsJS9ViRZ1zSAeFmr00QZS',
+          'delta' => 'l0YNsdJjrUIEbFjM007gmuIiDcuQXIfn',
           'region' => 'sidebar_first',
           'weight' => '-1',
         ),
-      ),
-    ),
-    'disable_context' => array(
-      'disabled' => array(
-        'search_box' => 'search_box',
+        'facetapi-HTP1vfBturlCLoRAwIOWieRHoJuYfGIA' => array(
+          'module' => 'facetapi',
+          'delta' => 'HTP1vfBturlCLoRAwIOWieRHoJuYfGIA',
+          'region' => 'sidebar_first',
+          'weight' => '0',
+        ),
+        'facetapi-Kyi1ogTI5fqL4Ao6C1L1VmKtE1FHU4p4' => array(
+          'module' => 'facetapi',
+          'delta' => 'Kyi1ogTI5fqL4Ao6C1L1VmKtE1FHU4p4',
+          'region' => 'sidebar_first',
+          'weight' => '1',
+        ),
+        'facetapi-MNq0COLqQ5kecA2svaD0bv6LqAnJ3eL4' => array(
+          'module' => 'facetapi',
+          'delta' => 'MNq0COLqQ5kecA2svaD0bv6LqAnJ3eL4',
+          'region' => 'sidebar_first',
+          'weight' => '2',
+        ),
+        'facetapi-aUrECBgqm27J7jHmiUXdTD91vUWiM1GR' => array(
+          'module' => 'facetapi',
+          'delta' => 'aUrECBgqm27J7jHmiUXdTD91vUWiM1GR',
+          'region' => 'sidebar_first',
+          'weight' => '3',
+        ),
+        'facetapi-fDpJDYtv9CqvLo1mKmbQtMLosiftDWH0' => array(
+          'module' => 'facetapi',
+          'delta' => 'fDpJDYtv9CqvLo1mKmbQtMLosiftDWH0',
+          'region' => 'sidebar_first',
+          'weight' => '4',
+        ),
+        'facetapi-iaIkIv4x5j6G6F2tKadUjznla3IB6rVF' => array(
+          'module' => 'facetapi',
+          'delta' => 'iaIkIv4x5j6G6F2tKadUjznla3IB6rVF',
+          'region' => 'sidebar_first',
+          'weight' => '5',
+        ),
+        'facetapi-11GB90hn3q10dqiWhznl41HyiarNuEog' => array(
+          'module' => 'facetapi',
+          'delta' => '11GB90hn3q10dqiWhznl41HyiarNuEog',
+          'region' => 'sidebar_first',
+          'weight' => '6',
+        ),
       ),
     ),
   );
@@ -94,35 +89,35 @@ function hr_op_presence_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Operational Presence');
   t('When searching for operational presence');
-  $export['op_presence'] = $context;
+  $export['user_profiles'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'op_presence_master';
+  $context->name = 'user_profiles_master';
   $context->description = 'When searching for operational presence';
   $context->tag = 'Operational Presence';
   $context->conditions = array(
     'views' => array(
       'values' => array(
-        'op_presence:master' => 'op_presence:master',
+        'user_profiles:master' => 'user_profiles:master',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views--exp-op_presence-master' => array(
+        'views--exp-user_profiles-master' => array(
           'module' => 'views',
-          'delta' => '-exp-op_presence-master',
+          'delta' => '-exp-user_profiles-master',
           'region' => 'sidebar_first',
-          'weight' => '-9',
+          'weight' => '-10',
         ),
         'search_api_sorts-search-sorts' => array(
           'module' => 'search_api_sorts',
           'delta' => 'search-sorts',
           'region' => 'sidebar_first',
-          'weight' => '0',
+          'weight' => '40',
         ),
       ),
     ),
@@ -133,35 +128,35 @@ function hr_op_presence_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Operational Presence');
   t('When searching for operational presence');
-  $export['op_presence_master'] = $context;
+  $export['user_profiles_master'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'op_presence_table';
+  $context->name = 'user_profiles_table';
   $context->description = 'When searching for operational presence';
   $context->tag = 'Operational Presence';
   $context->conditions = array(
     'views' => array(
       'values' => array(
-        'op_presence:table' => 'op_presence:table',
+        'user_profiles:table' => 'user_profiles:table',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views--exp-op_presence-table' => array(
-          'module' => 'views',
-          'delta' => '-exp-op_presence-table',
-          'region' => 'sidebar_first',
-          'weight' => '-9',
-        ),
         'search_api_sorts-search-sorts' => array(
           'module' => 'search_api_sorts',
           'delta' => 'search-sorts',
           'region' => 'sidebar_first',
           'weight' => '0',
+        ),
+        'views--exp-user_profiles-table' => array(
+          'module' => 'views',
+          'delta' => '-exp-user_profiles-table',
+          'region' => 'sidebar_first',
+          'weight' => '-9',
         ),
       ),
     ),
@@ -172,7 +167,7 @@ function hr_op_presence_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Operational Presence');
   t('When searching for operational presence');
-  $export['op_presence_table'] = $context;
+  $export['user_profiles_table'] = $context;
 
   return $export;
 }

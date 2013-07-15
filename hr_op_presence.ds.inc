@@ -12,33 +12,18 @@ function hr_op_presence_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
-  $ds_fieldsetting->id = 'user|user|search';
-  $ds_fieldsetting->entity_type = 'user';
-  $ds_fieldsetting->bundle = 'user';
+  $ds_fieldsetting->id = 'profile2|main|search';
+  $ds_fieldsetting->entity_type = 'profile2';
+  $ds_fieldsetting->bundle = 'main';
   $ds_fieldsetting->view_mode = 'search';
   $ds_fieldsetting->settings = array(
-    'user_email' => array(
-      'weight' => '0',
-      'label' => 'inline',
-      'format' => 'default',
-    ),
-    'name' => array(
+    'profile_name' => array(
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
-      'formatter_settings' => array(
-        'link' => '1',
-        'wrapper' => 'h2',
-        'class' => '',
-      ),
-    ),
-    'ds_user_picture' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'ds_picture_square_thumbnail',
     ),
   );
-  $export['user|user|search'] = $ds_fieldsetting;
+  $export['profile2|main|search'] = $ds_fieldsetting;
 
   return $export;
 }
@@ -51,21 +36,21 @@ function hr_op_presence_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
-  $ds_field->field = 'user_email';
-  $ds_field->label = 'Email';
+  $ds_field->field = 'profile_name';
+  $ds_field->label = 'Profile name';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
-    'user' => 'user',
+    'profile2' => 'profile2',
   );
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<a href="mailto:[user:mail]">[user:mail]</a>',
+      'value' => '<h2>[profile2:field_first_name] [profile2:field_last_name]</h2>',
       'format' => 'full_html',
     ),
-    'use_token' => 0,
+    'use_token' => 1,
   );
-  $export['user_email'] = $ds_field;
+  $export['profile_name'] = $ds_field;
 
   return $export;
 }
@@ -78,50 +63,41 @@ function hr_op_presence_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
-  $ds_layout->id = 'user|user|search';
-  $ds_layout->entity_type = 'user';
-  $ds_layout->bundle = 'user';
+  $ds_layout->id = 'profile2|main|search';
+  $ds_layout->entity_type = 'profile2';
+  $ds_layout->bundle = 'main';
   $ds_layout->view_mode = 'search';
-  $ds_layout->layout = 'ds_2col_stacked';
+  $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
     'regions' => array(
-      'right' => array(
-        0 => 'user_email',
-        3 => 'field_phones',
-        4 => 'field_clusters',
+      'ds_content' => array(
+        0 => 'profile_name',
+        1 => 'field_email',
+        2 => 'field_phones',
+        3 => 'field_clusters',
+        4 => 'field_organizations',
         5 => 'field_job_title',
-        6 => 'field_organizations',
-        7 => 'field_locations',
-      ),
-      'header' => array(
-        1 => 'name',
-      ),
-      'left' => array(
-        2 => 'ds_user_picture',
+        6 => 'field_locations',
       ),
     ),
     'fields' => array(
-      'user_email' => 'right',
-      'name' => 'header',
-      'ds_user_picture' => 'left',
-      'field_phones' => 'right',
-      'field_clusters' => 'right',
-      'field_job_title' => 'right',
-      'field_organizations' => 'right',
-      'field_locations' => 'right',
+      'profile_name' => 'ds_content',
+      'field_email' => 'ds_content',
+      'field_phones' => 'ds_content',
+      'field_clusters' => 'ds_content',
+      'field_organizations' => 'ds_content',
+      'field_job_title' => 'ds_content',
+      'field_locations' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'header' => 'div',
-      'left' => 'div',
-      'right' => 'div',
-      'footer' => 'div',
+      'ds_content' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
     'layout_attributes_merge' => 1,
   );
-  $export['user|user|search'] = $ds_layout;
+  $export['profile2|main|search'] = $ds_layout;
 
   return $export;
 }
