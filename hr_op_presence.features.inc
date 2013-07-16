@@ -42,8 +42,8 @@ function hr_op_presence_views_api() {
  */
 function hr_op_presence_default_search_api_autocomplete_search() {
   $items = array();
-  $items['search_api_views_op_presence'] = entity_import('search_api_autocomplete_search', '{
-    "machine_name" : "search_api_views_op_presence",
+  $items['search_api_views_user_profiles'] = entity_import('search_api_autocomplete_search', '{
+    "machine_name" : "search_api_views_user_profiles",
     "name" : "Operational Presence",
     "index_id" : "op_presence",
     "type" : "search_api_views",
