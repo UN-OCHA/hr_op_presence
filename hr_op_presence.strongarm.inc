@@ -13,9 +13,9 @@ function hr_op_presence_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'facetapi_pretty_paths_searcher_search_api@users';
+  $strongarm->name = 'facetapi_pretty_paths_searcher_search_api@user_profiles';
   $strongarm->value = 1;
-  $export['facetapi_pretty_paths_searcher_search_api@users'] = $strongarm;
+  $export['facetapi_pretty_paths_searcher_search_api@user_profiles'] = $strongarm;
 
   return $export;
 }
