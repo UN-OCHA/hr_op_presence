@@ -49,6 +49,14 @@ function hr_op_presence_views_default_views() {
     52310416 => 0,
     30037204 => 0,
   );
+  /* Filter criterion: Indexed Profile: Opt-out */
+  $handler->display->display_options['filters']['field_opt_out']['id'] = 'field_opt_out';
+  $handler->display->display_options['filters']['field_opt_out']['table'] = 'search_api_index_user_profiles';
+  $handler->display->display_options['filters']['field_opt_out']['field'] = 'field_opt_out';
+  $handler->display->display_options['filters']['field_opt_out']['operator'] = '<>';
+  $handler->display->display_options['filters']['field_opt_out']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Master */
   $handler = $view->new_display('page', 'Master', 'master');
