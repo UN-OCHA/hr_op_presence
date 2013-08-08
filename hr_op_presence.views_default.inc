@@ -491,6 +491,7 @@ function hr_op_presence_views_default_views() {
     ),
     'full_hcard' => 0,
     'as_tel_link' => 0,
+    'raw' => 1,
     'allow_alpha' => 0,
     'country_name_position' => 'after',
     'numbertype_position' => 'before',
@@ -572,6 +573,7 @@ function hr_op_presence_views_default_views() {
     ),
     'full_hcard' => 0,
     'as_tel_link' => 0,
+    'raw' => 1,
     'allow_alpha' => 0,
     'country_name_position' => 'after',
     'numbertype_position' => 'before',
@@ -668,19 +670,24 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['field_email']['id'] = 'field_email';
   $handler->display->display_options['fields']['field_email']['table'] = 'search_api_index_user_profiles';
   $handler->display->display_options['fields']['field_email']['field'] = 'field_email';
+  $handler->display->display_options['fields']['field_email']['type'] = 'email_plain';
   /* Field: Indexed Profile: Telephone(s) */
   $handler->display->display_options['fields']['field_phones']['id'] = 'field_phones';
   $handler->display->display_options['fields']['field_phones']['table'] = 'search_api_index_user_profiles';
   $handler->display->display_options['fields']['field_phones']['field'] = 'field_phones';
   $handler->display->display_options['fields']['field_phones']['label'] = 'Telephones';
+  $handler->display->display_options['fields']['field_phones']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_phones']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_phones']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_phones']['click_sort_column'] = 'numbertype';
   $handler->display->display_options['fields']['field_phones']['settings'] = array(
     'components' => array(
-      'numbertype' => 'numbertype',
       'country' => 0,
+      'numbertype' => 0,
     ),
     'full_hcard' => 0,
     'as_tel_link' => 0,
+    'raw' => 1,
     'allow_alpha' => 0,
     'country_name_position' => 'after',
     'numbertype_position' => 'before',
@@ -692,7 +699,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['field_organizations']['table'] = 'search_api_index_user_profiles';
   $handler->display->display_options['fields']['field_organizations']['field'] = 'field_organizations';
   $handler->display->display_options['fields']['field_organizations']['list']['separator'] = ';';
-  $handler->display->display_options['fields']['field_organizations']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_organizations']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_organizations']['view_mode'] = 'full';
   /* Field: Indexed Profile: Job Title */
   $handler->display->display_options['fields']['field_job_title']['id'] = 'field_job_title';
