@@ -71,17 +71,19 @@ function hr_op_presence_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'profile_name',
-        1 => 'field_email',
-        2 => 'field_phones',
-        3 => 'field_clusters',
-        4 => 'field_organizations',
-        5 => 'field_job_title',
-        6 => 'field_locations',
+        0 => 'field_first_name',
+        1 => 'field_last_name',
+        2 => 'field_email',
+        3 => 'field_phones',
+        4 => 'field_clusters',
+        5 => 'field_organizations',
+        6 => 'field_job_title',
+        7 => 'field_locations',
       ),
     ),
     'fields' => array(
-      'profile_name' => 'ds_content',
+      'field_first_name' => 'ds_content',
+      'field_last_name' => 'ds_content',
       'field_email' => 'ds_content',
       'field_phones' => 'ds_content',
       'field_clusters' => 'ds_content',
