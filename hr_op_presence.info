@@ -51,6 +51,7 @@ features[facetapi][] = search_api@user_profiles:block:field_fundings
 features[facetapi][] = search_api@user_profiles:block:field_job_title
 features[facetapi][] = search_api@user_profiles:block:field_locations
 features[facetapi][] = search_api@user_profiles:block:field_organizations
+features[facetapi][] = search_api@user_profiles:block:field_organizations:field_organization_type
 features[facetapi][] = search_api@user_profiles:block:field_themes
 features[features_api][] = api:2
 features[field_base][] = field_opt_out
