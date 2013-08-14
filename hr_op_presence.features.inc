@@ -96,7 +96,7 @@ function hr_op_presence_default_search_api_index() {
           "settings" : { "default" : "1", "bundles" : [] }
         },
         "search_api_alter_add_hierarchy" : {
-          "status" : 1,
+          "status" : 0,
           "weight" : "0",
           "settings" : { "fields" : { "field_locations:parents_all" : "field_locations:parents_all" } }
         },

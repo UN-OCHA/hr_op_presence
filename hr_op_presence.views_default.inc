@@ -761,6 +761,13 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'openlayers_data';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_organizations',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
   $handler->display->display_options['style_options']['data_source'] = array(
     'value' => 'other_latlon',
     'other_lat' => 'field_location_lat',
@@ -771,7 +778,7 @@ function hr_op_presence_views_default_views() {
     'other_bottom' => 'field_organizations',
     'other_left' => 'field_organizations',
     'name_field' => '',
-    'description_field' => 'field_organizations',
+    'description_field' => '',
     'style_field' => '',
   );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
