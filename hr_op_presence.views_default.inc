@@ -476,6 +476,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['field_email']['field'] = 'field_email';
   $handler->display->display_options['fields']['field_email']['label'] = '';
   $handler->display->display_options['fields']['field_email']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_email']['hide_empty'] = TRUE;
   /* Field: Indexed Profile: Telephone(s) */
   $handler->display->display_options['fields']['field_phones']['id'] = 'field_phones';
   $handler->display->display_options['fields']['field_phones']['table'] = 'search_api_index_user_profiles';
