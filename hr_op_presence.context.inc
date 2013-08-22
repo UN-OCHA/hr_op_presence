@@ -26,11 +26,11 @@ function hr_op_presence_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'current_search-standard' => array(
+        'current_search-hr_op_presence' => array(
           'module' => 'current_search',
-          'delta' => 'standard',
+          'delta' => 'hr_op_presence',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-12',
         ),
         'facetapi-l0YNsdJjrUIEbFjM007gmuIiDcuQXIfn' => array(
           'module' => 'facetapi',
