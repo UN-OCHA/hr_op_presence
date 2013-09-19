@@ -125,6 +125,12 @@ function hr_op_presence_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '40',
         ),
+        'search_api_saved_searches-user_profiles' => array(
+          'module' => 'search_api_saved_searches',
+          'delta' => 'user_profiles',
+          'region' => 'sidebar_first',
+          'weight' => '-13',
+        ),
       ),
     ),
   );
