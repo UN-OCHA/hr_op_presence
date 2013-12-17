@@ -115,6 +115,63 @@ function hr_op_presence_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'op_presence_graphs';
+  $context->description = 'On the graphs page';
+  $context->tag = 'Operational Presence';
+  $context->conditions = array(
+    'views' => array(
+      'values' => array(
+        'op_presence:graphs' => 'op_presence:graphs',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-0756ab467b9e0eca8fd566f837e055dd' => array(
+          'module' => 'views',
+          'delta' => '0756ab467b9e0eca8fd566f837e055dd',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'views-349406d2290ce2d2416cdde52a322457' => array(
+          'module' => 'views',
+          'delta' => '349406d2290ce2d2416cdde52a322457',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+        'views-2b2552724b244e6a72081aea3b2ed6de' => array(
+          'module' => 'views',
+          'delta' => '2b2552724b244e6a72081aea3b2ed6de',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
+        'views-1efc2fa8f8a3b1510bf657f412414906' => array(
+          'module' => 'views',
+          'delta' => '1efc2fa8f8a3b1510bf657f412414906',
+          'region' => 'content',
+          'weight' => '-7',
+        ),
+        'views-d33dc7a98bf1385795153277b7599b0e' => array(
+          'module' => 'views',
+          'delta' => 'd33dc7a98bf1385795153277b7599b0e',
+          'region' => 'content',
+          'weight' => '-6',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('On the graphs page');
+  t('Operational Presence');
+  $export['op_presence_graphs'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'op_presence_master';
   $context->description = 'When searching for operational presence';
   $context->tag = 'Operational Presence';

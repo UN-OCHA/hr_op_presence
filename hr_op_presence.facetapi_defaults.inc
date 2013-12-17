@@ -97,6 +97,89 @@ function hr_op_presence_facetapi_default_facet_settings() {
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
+  $facet->name = 'search_api@user_profiles::field_froles:field_functional_role';
+  $facet->searcher = 'search_api@user_profiles';
+  $facet->realm = '';
+  $facet->facet = 'field_froles:field_functional_role';
+  $facet->enabled = FALSE;
+  $facet->settings = array(
+    'operator' => 'or',
+    'hard_limit' => '50',
+    'dependencies' => array(
+      'bundle' => 'none',
+      'bundle_selected' => array(),
+      'roles' => array(),
+    ),
+    'facet_mincount' => '1',
+    'facet_missing' => '0',
+    'flatten' => '0',
+    'query_type' => 'term',
+    'default_true' => '1',
+    'facet_search_ids' => array(),
+    'pretty_paths_alias' => 'frole',
+    'pretty_paths_taxonomy_pathauto' => 1,
+    'pretty_paths_taxonomy_pathauto_vocabulary' => 'functional_role',
+  );
+  $export['search_api@user_profiles::field_froles:field_functional_role'] = $facet;
+
+  $facet = new stdClass();
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@user_profiles::field_froles:field_functional_role_of';
+  $facet->searcher = 'search_api@user_profiles';
+  $facet->realm = '';
+  $facet->facet = 'field_froles:field_functional_role_of';
+  $facet->enabled = FALSE;
+  $facet->settings = array(
+    'operator' => 'or',
+    'hard_limit' => '50',
+    'dependencies' => array(
+      'bundle' => 'none',
+      'bundle_selected' => array(),
+    ),
+    'facet_mincount' => '1',
+    'facet_missing' => '0',
+    'flatten' => '0',
+    'query_type' => 'term',
+    'default_true' => '1',
+    'facet_search_ids' => array(),
+    'pretty_paths_alias' => 'functional_role_of',
+    'pretty_paths_taxonomy_pathauto' => 0,
+    'pretty_paths_taxonomy_pathauto_vocabulary' => 'map_types',
+  );
+  $export['search_api@user_profiles::field_froles:field_functional_role_of'] = $facet;
+
+  $facet = new stdClass();
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@user_profiles::field_functional_roles';
+  $facet->searcher = 'search_api@user_profiles';
+  $facet->realm = '';
+  $facet->facet = 'field_functional_roles';
+  $facet->enabled = FALSE;
+  $facet->settings = array(
+    'operator' => 'or',
+    'hard_limit' => '50',
+    'dependencies' => array(
+      'bundle' => 'none',
+      'bundle_selected' => array(),
+      'roles' => array(),
+    ),
+    'facet_mincount' => '1',
+    'facet_missing' => '0',
+    'flatten' => '0',
+    'query_type' => 'term',
+    'default_true' => '1',
+    'facet_search_ids' => array(),
+    'pretty_paths_alias' => 'functional_role',
+    'pretty_paths_taxonomy_pathauto' => 1,
+    'pretty_paths_taxonomy_pathauto_vocabulary' => 'functional_role',
+  );
+  $export['search_api@user_profiles::field_functional_roles'] = $facet;
+
+  $facet = new stdClass();
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
   $facet->name = 'search_api@user_profiles::field_fundings';
   $facet->searcher = 'search_api@user_profiles';
   $facet->realm = '';
