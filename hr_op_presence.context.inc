@@ -128,35 +128,35 @@ function hr_op_presence_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-0756ab467b9e0eca8fd566f837e055dd' => array(
+        'views-b31c2d8c52ce0bed45e16bd1533bf029' => array(
           'module' => 'views',
-          'delta' => '0756ab467b9e0eca8fd566f837e055dd',
+          'delta' => 'b31c2d8c52ce0bed45e16bd1533bf029',
           'region' => 'content',
           'weight' => '-10',
         ),
-        'views-349406d2290ce2d2416cdde52a322457' => array(
+        'views-op_presence_graphs-by_cluster' => array(
           'module' => 'views',
-          'delta' => '349406d2290ce2d2416cdde52a322457',
+          'delta' => 'op_presence_graphs-by_cluster',
           'region' => 'content',
           'weight' => '-9',
         ),
-        'views-2b2552724b244e6a72081aea3b2ed6de' => array(
+        'views-b9f7d26bab4b20d5854139a4bbb93c71' => array(
           'module' => 'views',
-          'delta' => '2b2552724b244e6a72081aea3b2ed6de',
+          'delta' => 'b9f7d26bab4b20d5854139a4bbb93c71',
           'region' => 'content',
           'weight' => '-8',
         ),
-        'views-1efc2fa8f8a3b1510bf657f412414906' => array(
+        'views-op_presence_graphs-by_location' => array(
           'module' => 'views',
-          'delta' => '1efc2fa8f8a3b1510bf657f412414906',
+          'delta' => 'op_presence_graphs-by_location',
           'region' => 'content',
           'weight' => '-7',
         ),
-        'views-d33dc7a98bf1385795153277b7599b0e' => array(
+        'views-25066ef4abe522eee9840d41c4538e63' => array(
           'module' => 'views',
-          'delta' => 'd33dc7a98bf1385795153277b7599b0e',
+          'delta' => '25066ef4abe522eee9840d41c4538e63',
           'region' => 'content',
-          'weight' => '-6',
+          'weight' => '-5',
         ),
       ),
     ),

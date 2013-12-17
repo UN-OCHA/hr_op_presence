@@ -1859,7 +1859,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['pid']['field'] = 'pid';
   $handler->display->display_options['fields']['pid']['group_type'] = 'count_distinct';
   $handler->display->display_options['fields']['pid']['label'] = 'Number of contacts';
-  /* Field: Field: Source */
+  /* Field: Field: Organization */
   $handler->display->display_options['fields']['field_organizations']['id'] = 'field_organizations';
   $handler->display->display_options['fields']['field_organizations']['table'] = 'field_data_field_organizations';
   $handler->display->display_options['fields']['field_organizations']['field'] = 'field_organizations';
@@ -1884,7 +1884,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['filters']['field_opt_out_value']['value'] = array(
     1 => '1',
   );
-  /* Filter criterion: Field: Source (field_organizations) */
+  /* Filter criterion: Field: Organization (field_organizations) */
   $handler->display->display_options['filters']['field_organizations_tid']['id'] = 'field_organizations_tid';
   $handler->display->display_options['filters']['field_organizations_tid']['table'] = 'field_data_field_organizations';
   $handler->display->display_options['filters']['field_organizations_tid']['field'] = 'field_organizations_tid';
@@ -1927,12 +1927,12 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Field: Source (field_organizations) */
+  /* Relationship: Field: Organization (field_organizations) */
   $handler->display->display_options['relationships']['field_organizations_tid']['id'] = 'field_organizations_tid';
   $handler->display->display_options['relationships']['field_organizations_tid']['table'] = 'field_data_field_organizations';
   $handler->display->display_options['relationships']['field_organizations_tid']['field'] = 'field_organizations_tid';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Field: Source */
+  /* Field: Field: Organization */
   $handler->display->display_options['fields']['field_organizations']['id'] = 'field_organizations';
   $handler->display->display_options['fields']['field_organizations']['table'] = 'field_data_field_organizations';
   $handler->display->display_options['fields']['field_organizations']['field'] = 'field_organizations';
@@ -1963,7 +1963,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['filters']['field_opt_out_value']['value'] = array(
     1 => '1',
   );
-  /* Filter criterion: Field: Source (field_organizations) */
+  /* Filter criterion: Field: Organization (field_organizations) */
   $handler->display->display_options['filters']['field_organizations_tid']['id'] = 'field_organizations_tid';
   $handler->display->display_options['filters']['field_organizations_tid']['table'] = 'field_data_field_organizations';
   $handler->display->display_options['filters']['field_organizations_tid']['field'] = 'field_organizations_tid';
