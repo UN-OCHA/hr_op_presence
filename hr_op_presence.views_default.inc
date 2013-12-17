@@ -1598,5 +1598,489 @@ function hr_op_presence_views_default_views() {
   );
   $export['op_presence'] = $view;
 
+  $view = new view();
+  $view->name = 'op_presence_graphs';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'profile';
+  $view->human_name = 'Operational Presence Graphs';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Number of contacts by cluster';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'visualization';
+  $handler->display->display_options['style_options']['type'] = 'bar';
+  $handler->display->display_options['style_options']['fields'] = array(
+    'pid' => array(
+      'enabled' => 1,
+      'sort' => 'DESC',
+    ),
+    'field_clusters' => array(
+      'enabled' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['yAxis'] = array(
+    'title' => '',
+  );
+  $handler->display->display_options['style_options']['xAxis'] = array(
+    'labelField' => 'field_clusters',
+    'invert' => 0,
+  );
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Profile: Profile ID */
+  $handler->display->display_options['fields']['pid']['id'] = 'pid';
+  $handler->display->display_options['fields']['pid']['table'] = 'profile';
+  $handler->display->display_options['fields']['pid']['field'] = 'pid';
+  $handler->display->display_options['fields']['pid']['group_type'] = 'count_distinct';
+  $handler->display->display_options['fields']['pid']['label'] = 'Number of contacts';
+  /* Field: Field: Clusters */
+  $handler->display->display_options['fields']['field_clusters']['id'] = 'field_clusters';
+  $handler->display->display_options['fields']['field_clusters']['table'] = 'field_data_field_clusters';
+  $handler->display->display_options['fields']['field_clusters']['field'] = 'field_clusters';
+  $handler->display->display_options['fields']['field_clusters']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_clusters']['delta_offset'] = '0';
+  /* Filter criterion: Profile: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'profile';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'main' => 'main',
+  );
+  /* Filter criterion: Profile: Opt-out (field_opt_out) */
+  $handler->display->display_options['filters']['field_opt_out_value']['id'] = 'field_opt_out_value';
+  $handler->display->display_options['filters']['field_opt_out_value']['table'] = 'field_data_field_opt_out';
+  $handler->display->display_options['filters']['field_opt_out_value']['field'] = 'field_opt_out_value';
+  $handler->display->display_options['filters']['field_opt_out_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_opt_out_value']['value'] = array(
+    1 => '1',
+  );
+  /* Filter criterion: Field: Clusters (field_clusters) */
+  $handler->display->display_options['filters']['field_clusters_tid']['id'] = 'field_clusters_tid';
+  $handler->display->display_options['filters']['field_clusters_tid']['table'] = 'field_data_field_clusters';
+  $handler->display->display_options['filters']['field_clusters_tid']['field'] = 'field_clusters_tid';
+  $handler->display->display_options['filters']['field_clusters_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_clusters_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_clusters_tid']['vocabulary'] = 'clusters';
+
+  /* Display: By cluster */
+  $handler = $view->new_display('block', 'By cluster', 'by_cluster');
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['block_description'] = 'Number of contacts by cluster';
+
+  /* Display: By coordination hub */
+  $handler = $view->new_display('block', 'By coordination hub', 'by_coordination_hub');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Number of contacts by coordination hub';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'visualization';
+  $handler->display->display_options['style_options']['type'] = 'bar';
+  $handler->display->display_options['style_options']['fields'] = array(
+    'pid' => array(
+      'enabled' => 1,
+      'sort' => 'DESC',
+    ),
+    'field_coordination_hubs' => array(
+      'enabled' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['yAxis'] = array(
+    'title' => '',
+  );
+  $handler->display->display_options['style_options']['xAxis'] = array(
+    'labelField' => 'field_coordination_hubs',
+    'invert' => 0,
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Profile: Profile ID */
+  $handler->display->display_options['fields']['pid']['id'] = 'pid';
+  $handler->display->display_options['fields']['pid']['table'] = 'profile';
+  $handler->display->display_options['fields']['pid']['field'] = 'pid';
+  $handler->display->display_options['fields']['pid']['group_type'] = 'count_distinct';
+  $handler->display->display_options['fields']['pid']['label'] = 'Number of contacts';
+  /* Field: Field: Coordination Hub */
+  $handler->display->display_options['fields']['field_coordination_hubs']['id'] = 'field_coordination_hubs';
+  $handler->display->display_options['fields']['field_coordination_hubs']['table'] = 'field_data_field_coordination_hubs';
+  $handler->display->display_options['fields']['field_coordination_hubs']['field'] = 'field_coordination_hubs';
+  $handler->display->display_options['fields']['field_coordination_hubs']['label'] = '';
+  $handler->display->display_options['fields']['field_coordination_hubs']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_coordination_hubs']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_coordination_hubs']['delta_offset'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Profile: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'profile';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'main' => 'main',
+  );
+  /* Filter criterion: Profile: Opt-out (field_opt_out) */
+  $handler->display->display_options['filters']['field_opt_out_value']['id'] = 'field_opt_out_value';
+  $handler->display->display_options['filters']['field_opt_out_value']['table'] = 'field_data_field_opt_out';
+  $handler->display->display_options['filters']['field_opt_out_value']['field'] = 'field_opt_out_value';
+  $handler->display->display_options['filters']['field_opt_out_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_opt_out_value']['value'] = array(
+    1 => '1',
+  );
+  /* Filter criterion: Field: Coordination Hub (field_coordination_hubs) */
+  $handler->display->display_options['filters']['field_coordination_hubs_tid']['id'] = 'field_coordination_hubs_tid';
+  $handler->display->display_options['filters']['field_coordination_hubs_tid']['table'] = 'field_data_field_coordination_hubs';
+  $handler->display->display_options['filters']['field_coordination_hubs_tid']['field'] = 'field_coordination_hubs_tid';
+  $handler->display->display_options['filters']['field_coordination_hubs_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_coordination_hubs_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_coordination_hubs_tid']['vocabulary'] = 'coordination_hubs';
+  $handler->display->display_options['block_description'] = 'Number of contacts by coordination hub';
+
+  /* Display: By location */
+  $handler = $view->new_display('block', 'By location', 'by_location');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Number of contacts by location';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'visualization';
+  $handler->display->display_options['style_options']['type'] = 'bar';
+  $handler->display->display_options['style_options']['fields'] = array(
+    'pid' => array(
+      'enabled' => 1,
+      'sort' => 'DESC',
+    ),
+    'field_locations' => array(
+      'enabled' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['yAxis'] = array(
+    'title' => '',
+  );
+  $handler->display->display_options['style_options']['xAxis'] = array(
+    'labelField' => 'field_locations',
+    'invert' => 0,
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Profile: Profile ID */
+  $handler->display->display_options['fields']['pid']['id'] = 'pid';
+  $handler->display->display_options['fields']['pid']['table'] = 'profile';
+  $handler->display->display_options['fields']['pid']['field'] = 'pid';
+  $handler->display->display_options['fields']['pid']['group_type'] = 'count_distinct';
+  $handler->display->display_options['fields']['pid']['label'] = 'Number of contacts';
+  /* Field: Field: Location */
+  $handler->display->display_options['fields']['field_locations']['id'] = 'field_locations';
+  $handler->display->display_options['fields']['field_locations']['table'] = 'field_data_field_locations';
+  $handler->display->display_options['fields']['field_locations']['field'] = 'field_locations';
+  $handler->display->display_options['fields']['field_locations']['label'] = '';
+  $handler->display->display_options['fields']['field_locations']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_locations']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_locations']['delta_offset'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Profile: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'profile';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'main' => 'main',
+  );
+  /* Filter criterion: Profile: Opt-out (field_opt_out) */
+  $handler->display->display_options['filters']['field_opt_out_value']['id'] = 'field_opt_out_value';
+  $handler->display->display_options['filters']['field_opt_out_value']['table'] = 'field_data_field_opt_out';
+  $handler->display->display_options['filters']['field_opt_out_value']['field'] = 'field_opt_out_value';
+  $handler->display->display_options['filters']['field_opt_out_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_opt_out_value']['value'] = array(
+    1 => '1',
+  );
+  /* Filter criterion: Field: Location (field_locations) */
+  $handler->display->display_options['filters']['field_locations_tid']['id'] = 'field_locations_tid';
+  $handler->display->display_options['filters']['field_locations_tid']['table'] = 'field_data_field_locations';
+  $handler->display->display_options['filters']['field_locations_tid']['field'] = 'field_locations_tid';
+  $handler->display->display_options['filters']['field_locations_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_locations_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_locations_tid']['vocabulary'] = 'locations';
+  $handler->display->display_options['block_description'] = 'Number of contacts by location';
+
+  /* Display: By organization */
+  $handler = $view->new_display('block', 'By organization', 'by_organization');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Number of contacts by organization';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'visualization';
+  $handler->display->display_options['style_options']['type'] = 'bar';
+  $handler->display->display_options['style_options']['fields'] = array(
+    'pid' => array(
+      'enabled' => 1,
+      'sort' => 'DESC',
+    ),
+    'field_organizations' => array(
+      'enabled' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['yAxis'] = array(
+    'title' => '',
+  );
+  $handler->display->display_options['style_options']['xAxis'] = array(
+    'labelField' => 'field_organizations',
+    'invert' => 0,
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Profile: Profile ID */
+  $handler->display->display_options['fields']['pid']['id'] = 'pid';
+  $handler->display->display_options['fields']['pid']['table'] = 'profile';
+  $handler->display->display_options['fields']['pid']['field'] = 'pid';
+  $handler->display->display_options['fields']['pid']['group_type'] = 'count_distinct';
+  $handler->display->display_options['fields']['pid']['label'] = 'Number of contacts';
+  /* Field: Field: Source */
+  $handler->display->display_options['fields']['field_organizations']['id'] = 'field_organizations';
+  $handler->display->display_options['fields']['field_organizations']['table'] = 'field_data_field_organizations';
+  $handler->display->display_options['fields']['field_organizations']['field'] = 'field_organizations';
+  $handler->display->display_options['fields']['field_organizations']['label'] = '';
+  $handler->display->display_options['fields']['field_organizations']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_organizations']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_organizations']['delta_offset'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Profile: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'profile';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'main' => 'main',
+  );
+  /* Filter criterion: Profile: Opt-out (field_opt_out) */
+  $handler->display->display_options['filters']['field_opt_out_value']['id'] = 'field_opt_out_value';
+  $handler->display->display_options['filters']['field_opt_out_value']['table'] = 'field_data_field_opt_out';
+  $handler->display->display_options['filters']['field_opt_out_value']['field'] = 'field_opt_out_value';
+  $handler->display->display_options['filters']['field_opt_out_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_opt_out_value']['value'] = array(
+    1 => '1',
+  );
+  /* Filter criterion: Field: Source (field_organizations) */
+  $handler->display->display_options['filters']['field_organizations_tid']['id'] = 'field_organizations_tid';
+  $handler->display->display_options['filters']['field_organizations_tid']['table'] = 'field_data_field_organizations';
+  $handler->display->display_options['filters']['field_organizations_tid']['field'] = 'field_organizations_tid';
+  $handler->display->display_options['filters']['field_organizations_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_organizations_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_organizations_tid']['vocabulary'] = 'organizations';
+  $handler->display->display_options['block_description'] = 'Number of contacts by organization';
+
+  /* Display: Organizations by type */
+  $handler = $view->new_display('block', 'Organizations by type', 'organizations_by_type');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Number of organizations by type';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'visualization';
+  $handler->display->display_options['style_options']['type'] = 'bar';
+  $handler->display->display_options['style_options']['fields'] = array(
+    'field_organizations' => array(
+      'enabled' => 1,
+      'sort' => 'DESC',
+    ),
+    'field_organization_type' => array(
+      'enabled' => 0,
+      'sort' => '0',
+    ),
+  );
+  $handler->display->display_options['style_options']['yAxis'] = array(
+    'title' => '',
+  );
+  $handler->display->display_options['style_options']['xAxis'] = array(
+    'labelField' => 'field_organization_type',
+    'invert' => 0,
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Field: Source (field_organizations) */
+  $handler->display->display_options['relationships']['field_organizations_tid']['id'] = 'field_organizations_tid';
+  $handler->display->display_options['relationships']['field_organizations_tid']['table'] = 'field_data_field_organizations';
+  $handler->display->display_options['relationships']['field_organizations_tid']['field'] = 'field_organizations_tid';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Field: Source */
+  $handler->display->display_options['fields']['field_organizations']['id'] = 'field_organizations';
+  $handler->display->display_options['fields']['field_organizations']['table'] = 'field_data_field_organizations';
+  $handler->display->display_options['fields']['field_organizations']['field'] = 'field_organizations';
+  $handler->display->display_options['fields']['field_organizations']['group_type'] = 'count_distinct';
+  $handler->display->display_options['fields']['field_organizations']['label'] = '';
+  $handler->display->display_options['fields']['field_organizations']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_organizations']['separator'] = ', ';
+  /* Field: Taxonomy term: Type */
+  $handler->display->display_options['fields']['field_organization_type']['id'] = 'field_organization_type';
+  $handler->display->display_options['fields']['field_organization_type']['table'] = 'field_data_field_organization_type';
+  $handler->display->display_options['fields']['field_organization_type']['field'] = 'field_organization_type';
+  $handler->display->display_options['fields']['field_organization_type']['relationship'] = 'field_organizations_tid';
+  $handler->display->display_options['fields']['field_organization_type']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Profile: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'profile';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'main' => 'main',
+  );
+  /* Filter criterion: Profile: Opt-out (field_opt_out) */
+  $handler->display->display_options['filters']['field_opt_out_value']['id'] = 'field_opt_out_value';
+  $handler->display->display_options['filters']['field_opt_out_value']['table'] = 'field_data_field_opt_out';
+  $handler->display->display_options['filters']['field_opt_out_value']['field'] = 'field_opt_out_value';
+  $handler->display->display_options['filters']['field_opt_out_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_opt_out_value']['value'] = array(
+    1 => '1',
+  );
+  /* Filter criterion: Field: Source (field_organizations) */
+  $handler->display->display_options['filters']['field_organizations_tid']['id'] = 'field_organizations_tid';
+  $handler->display->display_options['filters']['field_organizations_tid']['table'] = 'field_data_field_organizations';
+  $handler->display->display_options['filters']['field_organizations_tid']['field'] = 'field_organizations_tid';
+  $handler->display->display_options['filters']['field_organizations_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_organizations_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_organizations_tid']['vocabulary'] = 'organizations';
+  /* Filter criterion: Taxonomy term: Type (field_organization_type) */
+  $handler->display->display_options['filters']['field_organization_type_tid']['id'] = 'field_organization_type_tid';
+  $handler->display->display_options['filters']['field_organization_type_tid']['table'] = 'field_data_field_organization_type';
+  $handler->display->display_options['filters']['field_organization_type_tid']['field'] = 'field_organization_type_tid';
+  $handler->display->display_options['filters']['field_organization_type_tid']['relationship'] = 'field_organizations_tid';
+  $handler->display->display_options['filters']['field_organization_type_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_organization_type_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_organization_type_tid']['vocabulary'] = 'organization_types';
+  $handler->display->display_options['block_description'] = 'Number of organizations by type';
+
+  /* Display: People over time */
+  $handler = $view->new_display('block', 'People over time', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Number of people over time';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'visualization';
+  $handler->display->display_options['style_options']['fields'] = array(
+    'created' => array(
+      'enabled' => 0,
+      'sort' => '0',
+    ),
+    'pid' => array(
+      'enabled' => 1,
+      'sort' => '0',
+    ),
+  );
+  $handler->display->display_options['style_options']['yAxis'] = array(
+    'title' => '',
+  );
+  $handler->display->display_options['style_options']['xAxis'] = array(
+    'labelField' => 'created',
+    'invert' => 0,
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Profile: Date created */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'profile';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['created']['custom_date_format'] = 'Y-M-d';
+  /* Field: Profile: Profile ID */
+  $handler->display->display_options['fields']['pid']['id'] = 'pid';
+  $handler->display->display_options['fields']['pid']['table'] = 'profile';
+  $handler->display->display_options['fields']['pid']['field'] = 'pid';
+  $handler->display->display_options['fields']['pid']['group_type'] = 'count_distinct';
+  $handler->display->display_options['fields']['pid']['label'] = '';
+  $handler->display->display_options['fields']['pid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['pid']['separator'] = '';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Profile: Date created */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'profile';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['granularity'] = 'day';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Profile: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'profile';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'main' => 'main',
+  );
+  /* Filter criterion: Profile: Opt-out (field_opt_out) */
+  $handler->display->display_options['filters']['field_opt_out_value']['id'] = 'field_opt_out_value';
+  $handler->display->display_options['filters']['field_opt_out_value']['table'] = 'field_data_field_opt_out';
+  $handler->display->display_options['filters']['field_opt_out_value']['field'] = 'field_opt_out_value';
+  $handler->display->display_options['filters']['field_opt_out_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_opt_out_value']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['block_description'] = 'Number of people over time';
+  $translatables['op_presence_graphs'] = array(
+    t('Master'),
+    t('Number of contacts by cluster'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Number of contacts'),
+    t('.'),
+    t(','),
+    t('Clusters'),
+    t('By cluster'),
+    t('By coordination hub'),
+    t('Number of contacts by coordination hub'),
+    t('By location'),
+    t('Number of contacts by location'),
+    t('By organization'),
+    t('Number of contacts by organization'),
+    t('Organizations by type'),
+    t('Number of organizations by type'),
+    t('term from field_organizations'),
+    t('Type'),
+    t('People over time'),
+    t('Number of people over time'),
+    t('Date created'),
+  );
+  $export['op_presence_graphs'] = $view;
+
   return $export;
 }
