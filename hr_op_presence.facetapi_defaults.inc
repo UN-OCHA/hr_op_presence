@@ -19,7 +19,7 @@ function hr_op_presence_facetapi_default_facet_settings() {
   $facet->facet = 'field_clusters';
   $facet->enabled = FALSE;
   $facet->settings = array(
-    'operator' => 'and',
+    'operator' => 'or',
     'hard_limit' => '50',
     'dependencies' => array(
       'bundle' => 'none',
@@ -47,11 +47,12 @@ function hr_op_presence_facetapi_default_facet_settings() {
   $facet->facet = 'field_coordination_hubs';
   $facet->enabled = FALSE;
   $facet->settings = array(
-    'operator' => 'and',
+    'operator' => 'or',
     'hard_limit' => '50',
     'dependencies' => array(
       'bundle' => 'none',
       'bundle_selected' => array(),
+      'roles' => array(),
     ),
     'facet_mincount' => '1',
     'facet_missing' => '0',
@@ -74,7 +75,7 @@ function hr_op_presence_facetapi_default_facet_settings() {
   $facet->facet = 'field_emergencies';
   $facet->enabled = FALSE;
   $facet->settings = array(
-    'operator' => 'and',
+    'operator' => 'or',
     'hard_limit' => '50',
     'dependencies' => array(
       'bundle' => 'none',
@@ -102,7 +103,7 @@ function hr_op_presence_facetapi_default_facet_settings() {
   $facet->facet = 'field_fundings';
   $facet->enabled = FALSE;
   $facet->settings = array(
-    'operator' => 'and',
+    'operator' => 'or',
     'hard_limit' => '50',
     'dependencies' => array(
       'bundle' => 'none',
@@ -130,7 +131,7 @@ function hr_op_presence_facetapi_default_facet_settings() {
   $facet->facet = 'field_job_title';
   $facet->enabled = FALSE;
   $facet->settings = array(
-    'operator' => 'and',
+    'operator' => 'or',
     'hard_limit' => '50',
     'dependencies' => array(
       'bundle' => 'none',
@@ -158,7 +159,7 @@ function hr_op_presence_facetapi_default_facet_settings() {
   $facet->facet = 'field_locations';
   $facet->enabled = FALSE;
   $facet->settings = array(
-    'operator' => 'and',
+    'operator' => 'or',
     'hard_limit' => '50',
     'dependencies' => array(
       'bundle' => 'none',
@@ -186,7 +187,7 @@ function hr_op_presence_facetapi_default_facet_settings() {
   $facet->facet = 'field_organizations';
   $facet->enabled = FALSE;
   $facet->settings = array(
-    'operator' => 'and',
+    'operator' => 'or',
     'hard_limit' => '50',
     'dependencies' => array(
       'bundle' => 'none',
@@ -214,7 +215,7 @@ function hr_op_presence_facetapi_default_facet_settings() {
   $facet->facet = 'field_organizations:field_organization_type';
   $facet->enabled = FALSE;
   $facet->settings = array(
-    'operator' => 'and',
+    'operator' => 'or',
     'hard_limit' => '50',
     'dependencies' => array(
       'bundle' => 'none',
@@ -242,7 +243,7 @@ function hr_op_presence_facetapi_default_facet_settings() {
   $facet->facet = 'field_themes';
   $facet->enabled = FALSE;
   $facet->settings = array(
-    'operator' => 'and',
+    'operator' => 'or',
     'hard_limit' => '50',
     'dependencies' => array(
       'bundle' => 'none',
@@ -294,7 +295,7 @@ function hr_op_presence_facetapi_default_facet_settings() {
     'empty_behavior' => 'none',
     'soft_limit' => '20',
     'nofollow' => 1,
-    'show_expanded' => 0,
+    'show_expanded' => 1,
     'keep_open' => 0,
     'expand' => 1,
     'collapsible_children' => 0,
@@ -654,7 +655,7 @@ function hr_op_presence_facetapi_default_facet_settings() {
     'empty_behavior' => 'none',
     'soft_limit' => '20',
     'nofollow' => 1,
-    'show_expanded' => 0,
+    'show_expanded' => 1,
     'keep_open' => 0,
     'expand' => 0,
     'collapsible_children' => 0,

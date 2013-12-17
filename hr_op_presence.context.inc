@@ -19,72 +19,87 @@ function hr_op_presence_context_default_contexts() {
   $context->conditions = array(
     'views' => array(
       'values' => array(
-        'op_presence' => 'op_presence',
+        'op_presence:list' => 'op_presence:list',
+        'op_presence:map' => 'op_presence:map',
+        'op_presence:master' => 'op_presence:master',
+        'op_presence:table' => 'op_presence:table',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'menu-menu-contacts-quick-links' => array(
+          'module' => 'menu',
+          'delta' => 'menu-contacts-quick-links',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
         'current_search-hr_op_presence' => array(
           'module' => 'current_search',
           'delta' => 'hr_op_presence',
           'region' => 'sidebar_first',
-          'weight' => '-12',
+          'weight' => '-9',
         ),
         'facetapi-l0YNsdJjrUIEbFjM007gmuIiDcuQXIfn' => array(
           'module' => 'facetapi',
           'delta' => 'l0YNsdJjrUIEbFjM007gmuIiDcuQXIfn',
           'region' => 'sidebar_first',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
         'facetapi-XSQGoekXGsJeN9aDfpucwSXC4HxP7B4W' => array(
           'module' => 'facetapi',
           'delta' => 'XSQGoekXGsJeN9aDfpucwSXC4HxP7B4W',
           'region' => 'sidebar_first',
-          'weight' => '-8',
+          'weight' => '-7',
         ),
         'facetapi-HTP1vfBturlCLoRAwIOWieRHoJuYfGIA' => array(
           'module' => 'facetapi',
           'delta' => 'HTP1vfBturlCLoRAwIOWieRHoJuYfGIA',
           'region' => 'sidebar_first',
-          'weight' => '-7',
-        ),
-        'facetapi-Kyi1ogTI5fqL4Ao6C1L1VmKtE1FHU4p4' => array(
-          'module' => 'facetapi',
-          'delta' => 'Kyi1ogTI5fqL4Ao6C1L1VmKtE1FHU4p4',
-          'region' => 'sidebar_first',
           'weight' => '-6',
+        ),
+        'facetapi-S3y0Lx93nDrexQr7fb1jCYMrZvzHmFIf' => array(
+          'module' => 'facetapi',
+          'delta' => 'S3y0Lx93nDrexQr7fb1jCYMrZvzHmFIf',
+          'region' => 'sidebar_first',
+          'weight' => '-4',
+        ),
+        'facetapi-E2ZfPWTcO8DvD30phMVHwk2kCKN34M1W' => array(
+          'module' => 'facetapi',
+          'delta' => 'E2ZfPWTcO8DvD30phMVHwk2kCKN34M1W',
+          'region' => 'sidebar_first',
+          'weight' => '-3',
         ),
         'facetapi-MNq0COLqQ5kecA2svaD0bv6LqAnJ3eL4' => array(
           'module' => 'facetapi',
           'delta' => 'MNq0COLqQ5kecA2svaD0bv6LqAnJ3eL4',
           'region' => 'sidebar_first',
-          'weight' => '-5',
+          'weight' => '-2',
         ),
         'facetapi-aUrECBgqm27J7jHmiUXdTD91vUWiM1GR' => array(
           'module' => 'facetapi',
           'delta' => 'aUrECBgqm27J7jHmiUXdTD91vUWiM1GR',
           'region' => 'sidebar_first',
-          'weight' => '-4',
+          'weight' => '-1',
         ),
         'facetapi-fDpJDYtv9CqvLo1mKmbQtMLosiftDWH0' => array(
           'module' => 'facetapi',
           'delta' => 'fDpJDYtv9CqvLo1mKmbQtMLosiftDWH0',
           'region' => 'sidebar_first',
-          'weight' => '-3',
+          'weight' => '0',
         ),
         'facetapi-iaIkIv4x5j6G6F2tKadUjznla3IB6rVF' => array(
           'module' => 'facetapi',
           'delta' => 'iaIkIv4x5j6G6F2tKadUjznla3IB6rVF',
           'region' => 'sidebar_first',
-          'weight' => '-2',
+          'weight' => '1',
         ),
         'facetapi-11GB90hn3q10dqiWhznl41HyiarNuEog' => array(
           'module' => 'facetapi',
           'delta' => '11GB90hn3q10dqiWhznl41HyiarNuEog',
           'region' => 'sidebar_first',
-          'weight' => '-1',
+          'weight' => '2',
         ),
       ),
     ),
@@ -158,17 +173,17 @@ function hr_op_presence_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'search_api_sorts-search-sorts' => array(
-          'module' => 'search_api_sorts',
-          'delta' => 'search-sorts',
-          'region' => 'sidebar_first',
-          'weight' => '0',
-        ),
         'views--exp-op_presence-table' => array(
           'module' => 'views',
           'delta' => '-exp-op_presence-table',
           'region' => 'sidebar_first',
           'weight' => '-9',
+        ),
+        'search_api_sorts-search-sorts' => array(
+          'module' => 'search_api_sorts',
+          'delta' => 'search-sorts',
+          'region' => 'sidebar_first',
+          'weight' => '50',
         ),
       ),
     ),
