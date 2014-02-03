@@ -1241,6 +1241,8 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['style_options']['transform'] = 1;
   $handler->display->display_options['style_options']['transform_type'] = 'camel';
+  $handler->display->display_options['style_options']['root_node'] = 'search_api_index_user_profiles';
+  $handler->display->display_options['style_options']['item_node'] = 'search_api_index_user_profile';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Indexed Profile: Profile ID */
   $handler->display->display_options['fields']['pid']['id'] = 'pid';
@@ -1400,37 +1402,35 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['relationships']['field_organizations']['table'] = 'search_api_index_user_profiles';
   $handler->display->display_options['relationships']['field_organizations']['field'] = 'field_organizations';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Taxonomy term: Term ID */
-  $handler->display->display_options['fields']['tid']['id'] = 'tid';
-  $handler->display->display_options['fields']['tid']['table'] = 'entity_taxonomy_term';
-  $handler->display->display_options['fields']['tid']['field'] = 'tid';
-  $handler->display->display_options['fields']['tid']['relationship'] = 'field_organizations';
-  $handler->display->display_options['fields']['tid']['label'] = '';
-  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['tid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['tid']['separator'] = '';
-  $handler->display->display_options['fields']['tid']['link_to_entity'] = 0;
-  /* Field: Taxonomy term: Term ID */
-  $handler->display->display_options['fields']['tid_1']['id'] = 'tid_1';
-  $handler->display->display_options['fields']['tid_1']['table'] = 'entity_taxonomy_term';
-  $handler->display->display_options['fields']['tid_1']['field'] = 'tid';
-  $handler->display->display_options['fields']['tid_1']['relationship'] = 'field_locations';
-  $handler->display->display_options['fields']['tid_1']['label'] = '';
-  $handler->display->display_options['fields']['tid_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['tid_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['tid_1']['separator'] = '';
-  $handler->display->display_options['fields']['tid_1']['link_to_entity'] = 0;
+  /* Field: Location: Term ID (indexed) */
+  $handler->display->display_options['fields']['field_locations_tid']['id'] = 'field_locations_tid';
+  $handler->display->display_options['fields']['field_locations_tid']['table'] = 'search_api_index_user_profiles';
+  $handler->display->display_options['fields']['field_locations_tid']['field'] = 'field_locations_tid';
+  $handler->display->display_options['fields']['field_locations_tid']['label'] = '';
+  $handler->display->display_options['fields']['field_locations_tid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_locations_tid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_locations_tid']['separator'] = '';
+  $handler->display->display_options['fields']['field_locations_tid']['link_to_entity'] = 0;
+  /* Field: Organization: Term ID (indexed) */
+  $handler->display->display_options['fields']['field_organizations_tid']['id'] = 'field_organizations_tid';
+  $handler->display->display_options['fields']['field_organizations_tid']['table'] = 'search_api_index_user_profiles';
+  $handler->display->display_options['fields']['field_organizations_tid']['field'] = 'field_organizations_tid';
+  $handler->display->display_options['fields']['field_organizations_tid']['label'] = '';
+  $handler->display->display_options['fields']['field_organizations_tid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_organizations_tid']['separator'] = '';
+  $handler->display->display_options['fields']['field_organizations_tid']['link_to_entity'] = 0;
   /* Field: Indexed Profile: Organization */
   $handler->display->display_options['fields']['field_organizations']['id'] = 'field_organizations';
   $handler->display->display_options['fields']['field_organizations']['table'] = 'search_api_index_user_profiles';
   $handler->display->display_options['fields']['field_organizations']['field'] = 'field_organizations';
   $handler->display->display_options['fields']['field_organizations']['label'] = '';
   $handler->display->display_options['fields']['field_organizations']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_organizations']['alter']['path'] = 'operational-presence/list/organization/[tid]/location/[tid_1]';
+  $handler->display->display_options['fields']['field_organizations']['alter']['path'] = 'operational-presence/list/organization/[field_organizations_tid]/location/[field_locations_tid]';
   $handler->display->display_options['fields']['field_organizations']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_organizations']['list']['mode'] = 'first';
   $handler->display->display_options['fields']['field_organizations']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_organizations']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_organizations']['bypass_access'] = 0;
   /* Field: Location » Location: Latitude (indexed) */
   $handler->display->display_options['fields']['field_locations_field_location_lat']['id'] = 'field_locations_field_location_lat';
   $handler->display->display_options['fields']['field_locations_field_location_lat']['table'] = 'search_api_index_user_profiles';
@@ -1859,7 +1859,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['fields']['pid']['field'] = 'pid';
   $handler->display->display_options['fields']['pid']['group_type'] = 'count_distinct';
   $handler->display->display_options['fields']['pid']['label'] = 'Number of contacts';
-  /* Field: Field: Organization */
+  /* Field: Field: Source */
   $handler->display->display_options['fields']['field_organizations']['id'] = 'field_organizations';
   $handler->display->display_options['fields']['field_organizations']['table'] = 'field_data_field_organizations';
   $handler->display->display_options['fields']['field_organizations']['field'] = 'field_organizations';
@@ -1884,7 +1884,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['filters']['field_opt_out_value']['value'] = array(
     1 => '1',
   );
-  /* Filter criterion: Field: Organization (field_organizations) */
+  /* Filter criterion: Field: Source (field_organizations) */
   $handler->display->display_options['filters']['field_organizations_tid']['id'] = 'field_organizations_tid';
   $handler->display->display_options['filters']['field_organizations_tid']['table'] = 'field_data_field_organizations';
   $handler->display->display_options['filters']['field_organizations_tid']['field'] = 'field_organizations_tid';
@@ -1927,12 +1927,12 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Field: Organization (field_organizations) */
+  /* Relationship: Field: Source (field_organizations) */
   $handler->display->display_options['relationships']['field_organizations_tid']['id'] = 'field_organizations_tid';
   $handler->display->display_options['relationships']['field_organizations_tid']['table'] = 'field_data_field_organizations';
   $handler->display->display_options['relationships']['field_organizations_tid']['field'] = 'field_organizations_tid';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Field: Organization */
+  /* Field: Field: Source */
   $handler->display->display_options['fields']['field_organizations']['id'] = 'field_organizations';
   $handler->display->display_options['fields']['field_organizations']['table'] = 'field_data_field_organizations';
   $handler->display->display_options['fields']['field_organizations']['field'] = 'field_organizations';
@@ -1963,7 +1963,7 @@ function hr_op_presence_views_default_views() {
   $handler->display->display_options['filters']['field_opt_out_value']['value'] = array(
     1 => '1',
   );
-  /* Filter criterion: Field: Organization (field_organizations) */
+  /* Filter criterion: Field: Source (field_organizations) */
   $handler->display->display_options['filters']['field_organizations_tid']['id'] = 'field_organizations_tid';
   $handler->display->display_options['filters']['field_organizations_tid']['table'] = 'field_data_field_organizations';
   $handler->display->display_options['filters']['field_organizations_tid']['field'] = 'field_organizations_tid';
